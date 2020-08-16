@@ -1,24 +1,13 @@
 public class PalindromeRecursive implements NumberChecker {
 
     @Override
-    public boolean isPalindrome(long number) {
-        String numberString = String.valueOf(number);
-        if (numberString.length() % 2 != 0) {
-            return false;
+    public boolean isPalindrome(String number) {
+        if (number.length() == 0) {
+            return true;
         }
-        int[] valid = { 22, 33, 44 };
-        for (int value : valid) {
-            if (number == value) {
-                return true;
-            }
-        }
-        if (numberString.charAt(0) == numberString.charAt(numberString.length() - 1)) {
-            long toNumber = 0;
-            String toCheck = numberString.substring(1, numberString.length() - 1);
-            if (!toCheck.equals("")) {
-                toNumber = Long.parseLong(toCheck);
-            }
-            return isPalindrome(toNumber);
+        if (number.charAt(0) == number.charAt(number.length() - 1)) {
+            String toCheck = number.substring(1, number.length() - 1);
+            return isPalindrome(toCheck);
         }
         return false;
     }
